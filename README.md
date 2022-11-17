@@ -1,6 +1,1 @@
-modules you need to install
-npm i express dotenv mongoose colors
-npm i express-async-handler
-
-dev dependency 
-npm i -D nodemon
+creating a mern app to use as a template for myself for future projects
