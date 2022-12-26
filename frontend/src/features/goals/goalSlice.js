@@ -1,9 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import goalService from './goalService'
 
-//get user from localStorage
-const user = JSON.parse(localStorage.getItem('user'))
-
 const initialState = {
   goals: [],
   isError: false,
@@ -17,7 +14,7 @@ export const createGoal = createAsyncThunk('goals/create', async (goalData, thun
     const token = thunkAPI.getState().auth.user.token
     return await goalService.createGoal(goalData, token)
   } catch (error) {
-    const message = (error.response && error.response.data && error.response.message || error.message || error.toString())
+    const message = (error.response && error.response.data && error.response.message) || error.message || error.toString()
     return thunkAPI.rejectWithValue(message)
   }
 })
@@ -28,7 +25,7 @@ export const getGoals = createAsyncThunk('goals/getAll', async (_, thunkAPI) => 
     const token = thunkAPI.getState().auth.user.token
     return await goalService.getGoals(token)
   } catch (error) {
-    const message = (error.response && error.response.data && error.response.message || error.message || error.toString())
+    const message = (error.response && error.response.data && error.response.message) || error.message || error.toString()
     return thunkAPI.rejectWithValue(message)
   }
 })
@@ -39,7 +36,7 @@ export const deleteGoal = createAsyncThunk('goals/delete', async (id, thunkAPI) 
     const token = thunkAPI.getState().auth.user.token
     return await goalService.deleteGoal(id, token)
   } catch (error) {
-    const message = (error.response && error.response.data && error.response.message || error.message || error.toString())
+    const message = (error.response && error.response.data && error.response.message) || error.message || error.toString()
     return thunkAPI.rejectWithValue(message)
   }
 })
